@@ -3,19 +3,44 @@ def passageFinder(bible, passage):
     output = ""
 
     if text[0] == "first" :
-        if text[5]  == "to" :
-            for verse in range((int)(text[4]), (int)(text[6])+1) :
-                output += str(verse) +". "
-                output += bible["1 "+text[1]][text[2]][str(verse)] +"\n"
-        else :
-            output = bible["1 "+text[1]][text[2]][text[4]]
+        try:
+            if text[5]  == "to" :
+                output = verseToVerse(bible, "1 "+text[1], text[2], text[4], text[6])
+        except IndexError as e:
+                output = verseToVerse(bible, "1 "+text[1], text[2], text[4], text[4])
+
     elif text[0] == "secound" :
-        output = bible["2 "+text[1]][text[2]][text[4]]
+        try:
+            if text[5]  == "to" :
+                output = verseToVerse(bible, "2 "+text[1], text[2], text[4], text[6])
+        except IndexError as e:
+                output = verseToVerse(bible, "2 "+text[1], text[2], text[4], text[4])
+
     elif text[0] == "third" :
-        output = bible["3 "+text[1]][text[2]][text[4]]
+        try:
+            if text[5]  == "to" :
+                output = verseToVerse(bible, "3 "+text[1], text[2], text[4], text[6])
+        except IndexError as e:
+                output = verseToVerse(bible, "3 "+text[1], text[2], text[4], text[4])
+
     elif text[0] == "fourth" :
-        output = bible["4 "+text[1]][text[2]][text[4]]
+        try:
+            if text[5]  == "to" :
+                output = verseToVerse(bible, "4 "+text[1], text[2], text[4], text[6])
+        except IndexError as e:
+                output = verseToVerse(bible, "4 "+text[1], text[2], text[4], text[4])
     else :
-        output = bible[text[0]][text[1]][text[3]]
+        try:
+            if text[4]  == "to" :
+                output = verseToVerse(bible, text[0], text[1], text[3], text[5])
+        except IndexError as e:
+                output = verseToVerse(bible, text[0], text[1], text[3], text[3])
+    return output
+
+def verseToVerse(bible, book, chapter, verse1, verse2):
+    output = ""
+    for verse in range((int)(verse1), (int)(verse2)+1) :
+        output += str(verse) +". "
+        output += bible[book][chapter][str(verse)] +"\n"
 
     return output
