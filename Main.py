@@ -7,6 +7,7 @@ import tkinter.messagebox
 def getText():
     global w
     passage = w.get()
+    print (passage)
     return passage
 
 
@@ -23,7 +24,6 @@ w.grid(row = 2, column = 1)
 voiceButton.grid(row = 1, column = 1)
 textButton.grid(row = 3, column = 1)
 #passage = "James 5 vs 1 to 5"
-print (passage)
 #print(passageFinder(bible, passage))
 root.mainloop()
 #passage = audioToText()
